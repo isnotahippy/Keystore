@@ -1,5 +1,9 @@
-<ul>
-{% for kp in keypairs %}
-	<li><a href="/edit/{{ kp.pk }}">{{ kp.key_name }} {{ kp.key_value }}</a></li>
-{% endfor %}
-</ul>
+{%  extends "interface/base.html" %}
+
+{% block content %}
+    <ul>
+    {% for kp in keypairs %}
+        <li><a href="/edit/{{ kp.pk }}">{{ kp.key_name }} {{ kp.key_value }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

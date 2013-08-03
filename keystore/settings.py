@@ -1,9 +1,11 @@
 # Django settings for keystore project.
 import os
 import dj_database_url
+import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 ADMINS = (
     ('Graeme', 'me@graememaciver.com'),
@@ -51,21 +53,21 @@ MEDIA_ROOT = ''
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = ''
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-   os.path.join(BASE_DIR, 'static'),
+    os.path.join(PROJECT_DIR, 'staticfiles'),
+    os.path.join(PROJECT_DIR, 'static'),
 )
+
 
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -95,6 +97,7 @@ WSGI_APPLICATION = 'keystore.wsgi.application'
 
 TEMPLATE_DIRS = (
     '/keystore/keys/templates'
+    '/keystore/interface/templates'
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -108,6 +111,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'keys',
+    'interface',
     'django.contrib.admin',
 )
 
