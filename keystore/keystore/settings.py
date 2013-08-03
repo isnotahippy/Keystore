@@ -1,5 +1,6 @@
 # Django settings for keystore project.
 import os
+import dj_database_url
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,14 +12,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'keystoreapplication'),
-        'USER': os.environ.get('DB_USER', 'graememaciver'),
-        'PASSWORD': os.environ.get('DB_PASS', ''),
-        'HOST': os.environ.get('DB_HOST', ''),
-        'PORT': os.environ.get('DB_PORT', '')
-    }
+    'default': dj_database_url.config(default='postgres://graememaciver@localhost/keystoreapplication')
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
