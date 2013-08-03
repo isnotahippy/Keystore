@@ -1,6 +1,7 @@
 # Django settings for keystore project.
 import os
 import dj_database_url
+import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,6 +12,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+print >>sys.stderr, dj_database_url.config()
 DATABASES = {
     'default': dj_database_url.config(default='postgres://graememaciver@localhost/keystoreapplication')
 }
