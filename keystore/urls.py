@@ -15,5 +15,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^list/', 'keys.views.keypair_list', {}, 'list'),
     url(r'^add/', 'keys.views.keypair_edit', {}, 'keypair_add'),
-    url(r'^edit/(?P<id>\d+)/$', 'keys.views.keypair_edit', {}, 'keypair_edit')
+    url(r'^edit/(?P<keyid>\d+)/$', 'keys.views.keypair_edit', {}, 'keypair_edit')
 )
