@@ -16,7 +16,7 @@ def keypair_list(request):
 
 def keypair_edit(request, keyid=None):
 
-    if id:
+    if keyid:
         keypair = get_object_or_404(KeyPair, pk=keyid)
     else:
         keypair = KeyPair()
