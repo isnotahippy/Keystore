@@ -14,10 +14,10 @@ class KeypairForm(ModelForm):
 def keypair_list(request):
     return render_to_response('list.html', { 'keypairs': KeyPair.objects.all() })
 
-def keypair_edit(request, id=None):
+def keypair_edit(request, keyid=None):
 
     if id:
-        keypair = get_object_or_404(KeyPair, pk=id)
+        keypair = get_object_or_404(KeyPair, pk=keyid)
     else:
         keypair = KeyPair()
 
