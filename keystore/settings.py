@@ -1,11 +1,21 @@
 # Django settings for keystore project.
 import os
 import dj_database_url
-import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+LOGIN_REDIRECT_URL = '/list'
+LOGIN_URL = '/login'
+LOGIN_ERROR_URL = '/login-error'
+
+SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
+SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
+
+GITHUB_APP_ID = os.environ.get('ENV_GITHUB_APP_ID','')
+GITHUB_API_SECRET = os.environ.get('ENV_GITHUB_API_SECRET','')
+FACEBOOK_APP_ID = os.environ.get('ENV_FACEBOOK_APP_ID','')
+FACEBOOK_API_SECRET = os.environ.get('ENV_FACEBOOK_API_SECRET','')
 
 ADMINS = (
     ('Graeme', 'me@graememaciver.com'),
@@ -53,14 +63,13 @@ MEDIA_ROOT = ''
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = ''
 
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, 'staticfiles'),
-    os.path.join(PROJECT_DIR, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(PROJECT_DIR, 'staticfiles'),
+# )
 
 
 # List of finder classes that know how to find static files in
@@ -86,6 +95,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'social_auth.middleware.SocialAuthExceptionMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -96,11 +106,16 @@ ROOT_URLCONF = 'keystore.urls'
 WSGI_APPLICATION = 'keystore.wsgi.application'
 
 TEMPLATE_DIRS = (
-    '/keystore/keys/templates'
+    '/keystore/keys/templates',
     '/keystore/interface/templates'
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'social_auth.context_processors.social_auth_by_name_backends',
+    'social_auth.context_processors.social_auth_backends',
+    'social_auth.context_processors.social_auth_by_type_backends',
+    'social_auth.context_processors.social_auth_login_redirect',
 )
 
 INSTALLED_APPS = (
@@ -113,6 +128,14 @@ INSTALLED_APPS = (
     'keys',
     'interface',
     'django.contrib.admin',
+    'south',
+    'social_auth'
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
+    'social_auth.backends.contrib.github.GithubBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -1,9 +1,21 @@
 {%  extends "interface/base.html" %}
 
 {% block content %}
+    <form method="post" action="">
+    {% csrf_token %}
+    {{ formset.management_form }}
     <ul>
-    {% for kp in keypairs %}
-        <li><a href="/edit/{{ kp.pk }}">{{ kp.key_name }} {{ kp.key_value }}</a></li>
-    {% endfor %}
+        {% for form in formset %}
+            <li>{{ form.id }}{{ form.key_name }}</li>
+        {% endfor %}
     </ul>
+    <ul>
+        {% for form in formset %}
+            <li>{{ form.key_value }}</li>
+        {% endfor %}
+    </ul>
+
+    <input type="submit" value="submit" />
+    <a href="/add">Add new</a>
+    </form>
 {% endblock %}

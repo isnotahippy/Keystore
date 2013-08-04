@@ -8,6 +8,7 @@
 <body>
     <header>
         <img src="{% static "images/logo.gif" %}" alt="KeyStore" />
+        {% if user.is_authenticated %} <a href="/logout">Logout</a> {%  else %} <a href="/register">Register</a> <a href="/login">Login</a> <a href="{% url "socialauth_begin" "github" %}">Login with Github</a> <a href="{% url "socialauth_begin" "facebook" %}">Login with Facebook</a> {% endif %}
     </header>
 
     {% block content %}{% endblock %}
