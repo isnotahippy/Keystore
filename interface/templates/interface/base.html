@@ -3,12 +3,20 @@
 <html>
 <head>
     <title>Keystore app</title>
-
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
 </head>
 <body>
-    <header>
-        <img src="{% static "images/logo.gif" %}" alt="KeyStore" />
-        {% if user.is_authenticated %} <a href="/logout">Logout</a> {%  else %} <a href="/register">Register</a> <a href="/login">Login</a> <a href="{% url "socialauth_begin" "github" %}">Login with Github</a> <a href="{% url "socialauth_begin" "facebook" %}">Login with Facebook</a> {% endif %}
+    <header class="main">
+    	<h1>KeyStore</h1>
+    	<nav>
+    		{% if user.is_authenticated %}
+    		<a href="/logout"><i class="icon-minus-sign"></i> Logout</a>
+    		{% else %}
+    		<a href="{% url "socialauth_begin" "github" %}"><i class="icon-github"></i> Login</a>
+    		<a href="{% url "socialauth_begin" "facebook" %}"><i class="icon-facebook"></i> Login</a>
+    		{% endif %}
+    	</nav>
     </header>
 
     {% block content %}{% endblock %}

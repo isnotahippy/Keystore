@@ -1,0 +1,22 @@
+.clearfix, header.main {
+  zoom: 1; }
+  .clearfix:before, header.main:before, .clearfix:after, header.main:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden; }
+  .clearfix:after, header.main:after {
+    clear: both; }
+
+header.main h1 {
+  text-indent: -99999px;
+  width: 200px;
+  height: 100px;
+  display: block;
+  background: url(../images/logo.gif) no-repeat;
+  padding: 0;
+  margin: 0;
+  float: left; }
+header.main nav a {
+  text-decoration: none;
+  color: #3e44d1; }

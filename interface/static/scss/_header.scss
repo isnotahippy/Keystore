@@ -1,0 +1,23 @@
+header.main {
+
+	@extend .clearfix;
+	
+	h1 {
+		text-indent: -99999px;
+		width: 200px;
+		height: 100px;
+		display: block;
+		background: url(../images/logo.gif) no-repeat;
+		padding: 0;
+		margin: 0;
+		float: left;
+	}
+
+	nav {
+
+		a {
+			text-decoration: none;
+			color: #3e44d1;
+		}
+	}
+}
