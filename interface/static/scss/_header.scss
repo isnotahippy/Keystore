@@ -1,10 +1,10 @@
 header.main {
 
 	@extend .clearfix;
-	
+
 	h1 {
 		text-indent: -99999px;
-		width: 200px;
+		width: 50%;
 		height: 100px;
 		display: block;
 		background: url(../images/logo.gif) no-repeat;
@@ -14,7 +14,7 @@ header.main {
 	}
 
 	nav {
-
+		width: 50%;
 		a {
 			text-decoration: none;
 			color: #3e44d1;

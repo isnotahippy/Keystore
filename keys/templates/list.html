@@ -1,21 +1,24 @@
 {%  extends "interface/base.html" %}
 
 {% block content %}
-    <form method="post" action="">
-    {% csrf_token %}
-    {{ formset.management_form }}
-    <ul>
-        {% for form in formset %}
-            <li>{{ form.id }}{{ form.key_name }}</li>
-        {% endfor %}
-    </ul>
-    <ul>
-        {% for form in formset %}
-            <li>{{ form.key_value }}</li>
-        {% endfor %}
-    </ul>
-
-    <input type="submit" value="submit" />
-    <a href="/add">Add new</a>
-    </form>
+    <table class="keypair_list">
+        <thead>
+            <tr>
+                <th class="name">Name</th>
+                <th class="value">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for keypair in keypairs %}
+            <tr class="keypair" data-kpid="{{ keypair.pk }}">
+                <td class="name">{{ keypair.key_name }}</td>
+                <td class="value">{{ keypair.key_value }}</td>
+            </tr>
+            {% endfor %}
+            <tr class="keypair new">
+                <td class="name">New Row</td>
+                <td class="value"></td>
+            </tr>
+        </tbody>
+    </table>
 {% endblock %}

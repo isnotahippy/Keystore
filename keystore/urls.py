@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     url(r'^add/', 'keys.views.keypair_edit', {}, 'keypair_add'),
     url(r'^edit/(?P<keyid>\d+)/$', 'keys.views.keypair_edit', {}, 'keypair_edit'),
 
+    url(r'^api/edit/', 'keys.views.keypair_api_post'),
+
     # url(r'^login/', 'django.contrib.auth.views.login'),
     url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^login-error/', 'interface.views.users.error'),
