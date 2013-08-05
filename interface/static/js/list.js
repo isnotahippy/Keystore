@@ -17,7 +17,7 @@ function getCookie(name) {
 
 var KeyStore = {
 	openRow: null,
-	default_name: "New Key",
+	default_name: "New Row",
 	default_value: "",
 	selectOpenRow: function() {
 		if(KeyStore.openRow==-1) {
@@ -103,6 +103,8 @@ var KeyStore = {
 				.append($('<td/>', { "class": "name", "text": KeyStore.default_name }))
 				.append($('<td/>', { "class": "value", "text": KeyStore.default_value }))
 			);
+
+			KeyStore.bindRows();
 		}
 	},
 	postEdited: function(keypair) {
@@ -129,9 +131,13 @@ var KeyStore = {
 			KeyStore.closeEditor();
 		}
 	},
+	bindRows: function() {
+		$('tr.keypair').unbind("click");
+		$('tr.keypair').bind("click", KeyStore.editorHandler);
+	},
 	initialize: function() {
 		$(document).keypress(KeyStore.keyHandler);
-		$('tr.keypair').bind("click", KeyStore.editorHandler);
+		KeyStore.bindRows();
 		$('html').bind("click", KeyStore.blur);
 	}
 }
