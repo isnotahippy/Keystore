@@ -48,28 +48,15 @@ def keypair_api_post(request):
 
             return HttpResponse(json.dumps({'kpid': keypair.pk, 'key_name': keypair.key_name, 'key_value': keypair.key_value }), mimetype="application/json")
 
+def keypair_api_delete(request):
+    if request.user.is_authenticated():
 
-@login_required
-def keypair_edit(request, keyid=None):
-
-    if keyid:
-        keypair = get_object_or_404(KeyPair, pk=keyid)
-    else:
-        keypair = KeyPair()
-
-    if request.POST:
-        form = KeypairForm(request.POST, instance=keypair)
-
-        try:
-            new_keypair = form.save(commit=False)
-            new_keypair.user = request.user
-            new_keypair.save()
-
-            return HttpResponseRedirect(reverse('list'))
-        except 'ValueErrror':
-            print >>sys.stderr, 'form errors'
-    else:
-        form = KeypairForm(instance=keypair)
-
-    return render_to_response('add.html', { 'KeypairForm': form }, context_instance=RequestContext(request))
-
+        if request.is_ajax():
+            if request.POST.get('kpid', False):
+                try:
+                    keypair = KeyPair.objects.get(pk=request.POST['kpid'])
+                    keypair.delete()
+                    return HttpResponse(json.dumps())
+                except 'DoesNotExist':
+                    keypair = KeyPair()
+                    keypair.user = request.user

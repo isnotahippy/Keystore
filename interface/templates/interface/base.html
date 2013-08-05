@@ -13,10 +13,10 @@
     	<h1>KeyStore</h1>
     	<nav>
     		{% if user.is_authenticated %}
-    		<a href="/logout"><i class="icon-minus-sign"></i> Logout</a>
+    		<a href="/logout"><i class="icon-minus-sign"></i><span>Logout</span></a>
     		{% else %}
-    		<a href="{% url "socialauth_begin" "github" %}"><i class="icon-github"></i> Login</a>
-    		<a href="{% url "socialauth_begin" "facebook" %}"><i class="icon-facebook"></i> Login</a>
+    		<a href="{% url "socialauth_begin" "github" %}"><i class="icon-github"></i><span>Login</span></a>
+    		<a href="{% url "socialauth_begin" "facebook" %}"><i class="icon-facebook"></i><span>Login</span></a>
     		{% endif %}
     	</nav>
     </header>

@@ -3,40 +3,48 @@ table.keypair_list {
 	border-spacing: 0;
 	border-width: 0 0 1px 1px;
 	border-style: solid;
-	border-color: black;
+	border-color: #E0E0E0;
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	font-size: 0.8em;
 
 	thead tr {
 		background: #90A5B6;
 	}
 
 	tr {
-		background: #D9D9D9;
+		background: #FFFFFF;
 		th, td {
 			border-width: 1px 1px 0 0;
 			border-style: solid;
-			border-color: #999999;
+			border-color: #E0E0E0;
 			padding: 10px;
 		}
 
-		th.name {
+		td.name {
 			width: 25%;
 		}
 
-		th.value {
+		td.value {
 			width: 75%;
 		}
 
+		&:hover {
+			background: #E0E0E0;
+			th, td {
+				border-color: #FFFFFF;
+			}
+		}
+
 		&.open {
-			background: #BEC1B8;
+			background: #E0E0E0;
 			padding: 0;
 
 			th, td {
 				border-width: 1px 1px 0 0;
 				border-style: solid;
-				border-color: #999999;
+				border-color: #FFFFFF;
 				padding: 0;
 			}
 		}

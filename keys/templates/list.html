@@ -2,22 +2,18 @@
 
 {% block content %}
     <table class="keypair_list">
-        <thead>
-            <tr>
-                <th class="name">Name</th>
-                <th class="value">Value</th>
-            </tr>
-        </thead>
         <tbody>
             {% for keypair in keypairs %}
             <tr class="keypair" data-kpid="{{ keypair.pk }}">
                 <td class="name">{{ keypair.key_name }}</td>
                 <td class="value">{{ keypair.key_value }}</td>
+                <td clas="remove"><i class="icon-remove-sign"></i></td>
             </tr>
             {% endfor %}
             <tr class="keypair new">
                 <td class="name">New Row</td>
                 <td class="value"></td>
+                <td clas="remove"><i class="icon-remove-sign"></i></td>
             </tr>
         </tbody>
     </table>
