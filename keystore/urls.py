@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 
     url(r'^api/keypair/', 'keys.views.keypair_api_post'),
 
+    # url(r'^login/', 'django.contrib.auth.views.login'),
     url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^login-error/', 'interface.views.users.error'),
 
