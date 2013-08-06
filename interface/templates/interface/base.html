@@ -10,10 +10,12 @@
 </head>
 <body>
     <header class="main">
-    	<h1>KeyStore</h1>
+    	<a href="/"><h1>KeyStore</h1></a>
     	<nav>
     		{% if user.is_authenticated %}
     		<a href="/logout"><i class="icon-minus-sign"></i><span>Logout</span></a>
+            <a href="/list"><i class="icon-list"></i><span>List</span></a>
+            <span class="welcome">Hello, {{ name }}</span>
     		{% else %}
     		<a href="{% url "socialauth_begin" "github" %}"><i class="icon-github"></i><span>Login</span></a>
     		<a href="{% url "socialauth_begin" "facebook" %}"><i class="icon-facebook"></i><span>Login</span></a>
@@ -24,7 +26,7 @@
     {% block content %}{% endblock %}
 
     <footer>
-        <p>Work in progress</p>
+
     </footer>
 </body>
 </html>

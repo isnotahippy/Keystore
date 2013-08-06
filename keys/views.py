@@ -22,7 +22,7 @@ def keypair_list(request):
 
         KeyPairs = KeyPair.objects.filter(user=request.user).order_by('pk')
 
-        return render_to_response('list.html', {'keypairs': KeyPairs}, context_instance=RequestContext(request))
+        return render_to_response('list.html', { 'name': request.user.username, 'keypairs': KeyPairs}, context_instance=RequestContext(request))
 
 def keypair_api_post(request):
 
