@@ -110,7 +110,7 @@ var KeyStore = {
 	postEdited: function(keypair) {
 
 		$.ajax({
-			url: "/api/edit/",
+			url: "/api/keypair/",
 			type: "POST",
 			data: {
 				"kpid": keypair.attr('data-kpid'),
