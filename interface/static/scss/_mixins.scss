@@ -10,3 +10,14 @@
         clear: both;
     }
 }
+
+@mixin button($r,$g,$b) {
+    background: rgb($r,$g,$b);
+    box-shadow: 0px 3px 0 rgba($r,$g,$b, 0.5);
+    border-top: 1px solid rgba($r,$g,$b, 0.1);
+
+    &:hover {
+        margin-top: 1px;
+        box-shadow: 0px 1px 0 rgba($r,$g,$b, 0.5);
+    }
+}

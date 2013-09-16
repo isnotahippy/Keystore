@@ -135,10 +135,31 @@ var KeyStore = {
 		$('tr.keypair').unbind("click");
 		$('tr.keypair').bind("click", KeyStore.editorHandler);
 	},
+	remove: function(e) {
+		e.stopPropagation();
+
+		var kpid = $(this).attr('data-kpid');
+		console.log('delete', kpid);
+		$.ajax({
+			url: "/api/keypair/",
+			type: "DELETE",
+			data: {
+				"kpid": kpid,
+			},
+			success: KeyStore.postSuccess,
+			error: function(data) {
+				// Handle failure to save
+			},
+			beforeSend: function(xhr, settings) {
+	            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+	    	}
+	  	});
+	},
 	initialize: function() {
 		$(document).keypress(KeyStore.keyHandler);
 		KeyStore.bindRows();
 		$('html').bind("click", KeyStore.blur);
+		$('td.remove').bind("click", KeyStore.remove);
 	}
 }
 

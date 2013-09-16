@@ -4,9 +4,9 @@ import dj_database_url
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGIN_REDIRECT_URL = '/list'
-LOGIN_URL = '/login'
+LOGIN_URL = '/'
 LOGIN_ERROR_URL = '/login-error'
 
 SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
@@ -16,6 +16,13 @@ GITHUB_APP_ID = os.environ.get('ENV_GITHUB_APP_ID','')
 GITHUB_API_SECRET = os.environ.get('ENV_GITHUB_API_SECRET','')
 FACEBOOK_APP_ID = os.environ.get('ENV_FACEBOOK_APP_ID','')
 FACEBOOK_API_SECRET = os.environ.get('ENV_FACEBOOK_API_SECRET','')
+
+MESSAGES = {
+    "api": {
+        "keypair_forbidden": "Could not access this value",
+        "keypair_notfound": "This value could not be found",
+    }
+}
 
 ADMINS = (
     ('Graeme', 'me@graememaciver.com'),
@@ -63,7 +70,7 @@ MEDIA_ROOT = ''
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = ''
 
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(PROJECT_DIR, '../staticfiles')
 STATIC_URL = '/static/'
 
 # Additional locations of static files

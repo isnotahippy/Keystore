@@ -1,14 +1,16 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.forms.models import modelformset_factory
 from keys.models import KeyPair
-from django.http import HttpResponseRedirect, HttpResponseNotModified, HttpResponse
-from django.forms import ModelForm
+from django.http import HttpResponseNotFound, HttpResponseForbidden, HttpResponse
+from django.forms import ModelForm, model_to_dict
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
 import sys
 import json
+from django.core import serializers
+from django.conf import settings
 
 class KeypairForm(ModelForm):
     class Meta:
@@ -20,16 +22,18 @@ class KeypairForm(ModelForm):
 def keypair_list(request):
     if request.user.is_authenticated():
 
-        KeyPairs = KeyPair.objects.filter(user=request.user).order_by('pk')
+        KeyPairs = KeyPair.objects.filter(user=request.user, deleted=False).order_by('pk')
 
         return render_to_response('list.html', { 'name': request.user.username, 'keypairs': KeyPairs}, context_instance=RequestContext(request))
 
-def keypair_api_post(request):
+@ensure_csrf_cookie
+@login_required
+def keypair_api_general(request):
 
     if request.user.is_authenticated():
 
-        if request.is_ajax():
-
+        # Post/create new key pair
+        if request.method == "POST":
             if request.POST.get('kpid', False):
                 try:
                     keypair = KeyPair.objects.get(pk=request.POST['kpid'])
@@ -48,15 +52,28 @@ def keypair_api_post(request):
 
             return HttpResponse(json.dumps({'kpid': keypair.pk, 'key_name': keypair.key_name, 'key_value': keypair.key_value }), mimetype="application/json")
 
-def keypair_api_delete(request):
-    if request.user.is_authenticated():
+        # Get list
+        elif request.method == "GET":
+            KeyPairs = KeyPair.objects.filter(user=request.user, deleted=False).order_by('pk')
+            return HttpResponse(serializers.serialize('json',KeyPairs), mimetype="application/json")
 
-        if request.is_ajax():
-            if request.POST.get('kpid', False):
-                try:
-                    keypair = KeyPair.objects.get(pk=request.POST['kpid'])
+@ensure_csrf_cookie
+@login_required
+def keypair_api_specific(request, id):
+    if request.user.is_authenticated():
+        try:
+            keypair = KeyPair.objects.get(pk=id)
+
+            if(keypair.user==request.user):
+
+                if request.method=="DELETE":
+                    response = json.dumps({"model": model_to_dict(keypair)})
                     keypair.delete()
-                    return HttpResponse(json.dumps())
-                except 'DoesNotExist':
-                    keypair = KeyPair()
-                    keypair.user = request.user
+                    return HttpResponse(response, mimetype="application/json")
+                else:
+                    return HttpResponse(json.dumps({"model": model_to_dict(keypair)}), mimetype="application/json")
+            else:
+                return HttpResponseForbidden(json.dumps({ "error": settings.MESSAGES['api']['keypair_forbidden'] }), mimetype="application/json")
+        except KeyPair.DoesNotExist:
+            return HttpResponseNotFound(json.dumps({ "error": settings.MESSAGES['api']['keypair_notfound'] }), mimetype="application/json")
+

@@ -1,11 +1,288 @@
-.clearfix, header.main {
+/*
+	Variable Grid System.
+	Learn more ~ http://www.spry-soft.com/grids/
+	Based on 960 Grid System - http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+body {
+  min-width: 960px; }
+
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container_12 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px; }
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12 {
+  display: inline;
+  float: left;
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px; }
+
+.push_1, .pull_1,
+.push_2, .pull_2,
+.push_3, .pull_3,
+.push_4, .pull_4,
+.push_5, .pull_5,
+.push_6, .pull_6,
+.push_7, .pull_7,
+.push_8, .pull_8,
+.push_9, .pull_9,
+.push_10, .pull_10,
+.push_11, .pull_11,
+.push_12, .pull_12 {
+  position: relative; }
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+.alpha {
+  margin-left: 0; }
+
+.omega {
+  margin-right: 0; }
+
+/* Grid >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_12 .grid_1 {
+  width: 60px; }
+
+.container_12 .grid_2 {
+  width: 140px; }
+
+.container_12 .grid_3 {
+  width: 220px; }
+
+.container_12 .grid_4 {
+  width: 300px; }
+
+.container_12 .grid_5 {
+  width: 380px; }
+
+.container_12 .grid_6 {
+  width: 460px; }
+
+.container_12 .grid_7 {
+  width: 540px; }
+
+.container_12 .grid_8 {
+  width: 620px; }
+
+.container_12 .grid_9 {
+  width: 700px; }
+
+.container_12 .grid_10 {
+  width: 780px; }
+
+.container_12 .grid_11 {
+  width: 860px; }
+
+.container_12 .grid_12 {
+  width: 940px; }
+
+/* Prefix Extra Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_12 .prefix_1 {
+  padding-left: 80px; }
+
+.container_12 .prefix_2 {
+  padding-left: 160px; }
+
+.container_12 .prefix_3 {
+  padding-left: 240px; }
+
+.container_12 .prefix_4 {
+  padding-left: 320px; }
+
+.container_12 .prefix_5 {
+  padding-left: 400px; }
+
+.container_12 .prefix_6 {
+  padding-left: 480px; }
+
+.container_12 .prefix_7 {
+  padding-left: 560px; }
+
+.container_12 .prefix_8 {
+  padding-left: 640px; }
+
+.container_12 .prefix_9 {
+  padding-left: 720px; }
+
+.container_12 .prefix_10 {
+  padding-left: 800px; }
+
+.container_12 .prefix_11 {
+  padding-left: 880px; }
+
+/* Suffix Extra Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_12 .suffix_1 {
+  padding-right: 80px; }
+
+.container_12 .suffix_2 {
+  padding-right: 160px; }
+
+.container_12 .suffix_3 {
+  padding-right: 240px; }
+
+.container_12 .suffix_4 {
+  padding-right: 320px; }
+
+.container_12 .suffix_5 {
+  padding-right: 400px; }
+
+.container_12 .suffix_6 {
+  padding-right: 480px; }
+
+.container_12 .suffix_7 {
+  padding-right: 560px; }
+
+.container_12 .suffix_8 {
+  padding-right: 640px; }
+
+.container_12 .suffix_9 {
+  padding-right: 720px; }
+
+.container_12 .suffix_10 {
+  padding-right: 800px; }
+
+.container_12 .suffix_11 {
+  padding-right: 880px; }
+
+/* Push Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_12 .push_1 {
+  left: 80px; }
+
+.container_12 .push_2 {
+  left: 160px; }
+
+.container_12 .push_3 {
+  left: 240px; }
+
+.container_12 .push_4 {
+  left: 320px; }
+
+.container_12 .push_5 {
+  left: 400px; }
+
+.container_12 .push_6 {
+  left: 480px; }
+
+.container_12 .push_7 {
+  left: 560px; }
+
+.container_12 .push_8 {
+  left: 640px; }
+
+.container_12 .push_9 {
+  left: 720px; }
+
+.container_12 .push_10 {
+  left: 800px; }
+
+.container_12 .push_11 {
+  left: 880px; }
+
+/* Pull Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_12 .pull_1 {
+  left: -80px; }
+
+.container_12 .pull_2 {
+  left: -160px; }
+
+.container_12 .pull_3 {
+  left: -240px; }
+
+.container_12 .pull_4 {
+  left: -320px; }
+
+.container_12 .pull_5 {
+  left: -400px; }
+
+.container_12 .pull_6 {
+  left: -480px; }
+
+.container_12 .pull_7 {
+  left: -560px; }
+
+.container_12 .pull_8 {
+  left: -640px; }
+
+.container_12 .pull_9 {
+  left: -720px; }
+
+.container_12 .pull_10 {
+  left: -800px; }
+
+.container_12 .pull_11 {
+  left: -880px; }
+
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+/* http://sonspring.com/journal/clearing-floats */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+.clearfix:before, header.main:before, table.keypair_list tr:before,
+.clearfix:after,
+header.main:after,
+table.keypair_list tr:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+
+.clearfix:after, header.main:after, table.keypair_list tr:after {
+  clear: both; }
+
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+.clearfix, header.main, table.keypair_list tr {
   zoom: 1; }
-  .clearfix:before, header.main:before, .clearfix:after, header.main:after {
+
+.clearfix, header.main, table.keypair_list tr {
+  zoom: 1; }
+  .clearfix:before, header.main:before, table.keypair_list tr:before, .clearfix:after, header.main:after, table.keypair_list tr:after {
     content: "\0020";
     display: block;
     height: 0;
     overflow: hidden; }
-  .clearfix:after, header.main:after {
+  .clearfix:after, header.main:after, table.keypair_list tr:after {
     clear: both; }
 
 body, input {
@@ -13,72 +290,99 @@ body, input {
   font-size: 16px; }
 
 header.main {
-  width: 100%;
-  background: #5980AF;
-  border-bottom: 5px solid #426186;
-  padding: 20px 20px 10px; }
+  background: #383939;
+  padding: 10px 0; }
   header.main h1 {
     text-indent: -99999px;
-    width: 50%;
     height: 40px;
     display: block;
-    background: url(../images/logo.png) no-repeat;
+    background: url(../images/logo.png) no-repeat 10px 0px;
     padding: 0;
-    margin: 0;
-    float: left; }
-  header.main nav {
-    width: 47%;
-    float: left; }
-    header.main nav span.welcome {
-      display: block;
-      float: right;
-      padding: 8px 5px;
-      color: white; }
-    header.main nav a {
-      text-decoration: none;
-      color: #ffffff;
-      background: #426186;
-      border-radius: 5px;
-      padding: 5px;
-      box-shadow: 0px 2px 0 rgba(0, 0, 0, 0.6);
-      border-top: 1px solid rgba(255, 255, 255, 0.3);
-      float: right;
-      display: block;
-      margin: 0 0 0 10px; }
-      header.main nav a:hover {
-        margin: 1px 0 0 10px;
-        box-shadow: 0px 1px 0 rgba(0, 0, 0, 0.6); }
-      header.main nav a span {
-        padding: 5px 10px;
-        text-transform: uppercase;
-        font-size: 0.8em;
-        border-left: 1px solid rgba(0, 0, 0, 0.2); }
-      header.main nav a i {
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 5px 10px 5px 5px; }
+    margin: 0; }
+    header.main h1 a {
+      width: 100%;
+      height: 100%;
+      display: block; }
+  header.main.condensed {
+    position: fixed;
+    z-index: 100; }
+    header.main.condensed h1 {
+      background: url(../images/logo_condensed.png) no-repeat 20px 0px; }
+  header.main nav span.welcome {
+    display: inline-block;
+    color: white; }
+  header.main nav a.icon {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 5px;
+    display: inline-block;
+    font-size: 1.2em;
+    text-shadow: 1px 4px 0 black; }
+  header.main nav a.button {
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 5px;
+    display: inline-block;
+    background: #426186;
+    box-shadow: 0px 3px 0 rgba(66, 97, 134, 0.5);
+    border-top: 1px solid rgba(66, 97, 134, 0.1); }
+    header.main nav a.button:hover {
+      margin-top: 1px;
+      box-shadow: 0px 1px 0 rgba(66, 97, 134, 0.5); }
+    header.main nav a.button span {
+      padding: 5px 10px;
+      text-transform: uppercase;
+      font-size: 0.8em;
+      border-left: 1px solid rgba(0, 0, 0, 0.2); }
+    header.main nav a.button i {
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 10px 5px 10px;
+      display: inline-block; }
+    header.main nav a.button.orange {
+      background: #ff9900;
+      box-shadow: 0px 3px 0 rgba(255, 153, 0, 0.5);
+      border-top: 1px solid rgba(255, 153, 0, 0.1); }
+      header.main nav a.button.orange:hover {
+        margin-top: 1px;
+        box-shadow: 0px 1px 0 rgba(255, 153, 0, 0.5); }
+    header.main nav a.button.github {
+      background: #ededed;
+      box-shadow: 0px 3px 0 rgba(237, 237, 237, 0.5);
+      border-top: 1px solid rgba(237, 237, 237, 0.1); }
+      header.main nav a.button.github:hover {
+        margin-top: 1px;
+        box-shadow: 0px 1px 0 rgba(237, 237, 237, 0.5); }
+  header.main .search {
+    border: 0;
+    background: #383939;
+    color: #FFFFFF;
+    font-size: 22px;
+    padding: 5px 0;
+    border-bottom: 1px solid grey;
+    outline: none !important;
+    font-style: italic; }
 
 table.keypair_list {
   border-spacing: 0;
-  border-width: 0 0 1px 1px;
+  border-width: 0;
   border-style: solid;
   border-color: #E0E0E0;
   margin: 0;
   padding: 0;
-  width: 100%;
-  font-size: 0.8em; }
+  font-size: 0.8em;
+  padding: 50px 0 0; }
   table.keypair_list thead tr {
     background: #90A5B6; }
   table.keypair_list tr {
-    background: #FFFFFF; }
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #E0E0E0;
+    display: block;
+    padding: 10px 0; }
     table.keypair_list tr th, table.keypair_list tr td {
-      border-width: 1px 1px 0 0;
+      border: 0;
       border-style: solid;
-      border-color: #E0E0E0;
-      padding: 10px; }
-    table.keypair_list tr td.name {
-      width: 25%; }
-    table.keypair_list tr td.value {
-      width: 75%; }
+      border-color: #E0E0E0; }
     table.keypair_list tr:hover {
       background: #E0E0E0; }
       table.keypair_list tr:hover th, table.keypair_list tr:hover td {
@@ -87,17 +391,17 @@ table.keypair_list {
       background: #E0E0E0;
       padding: 0; }
       table.keypair_list tr.open th, table.keypair_list tr.open td {
-        border-width: 1px 1px 0 0;
-        border-style: solid;
-        border-color: #FFFFFF;
         padding: 0; }
     table.keypair_list tr input {
       background: transparent;
       border: 0;
-      padding: 10px;
+      padding: 10px 0;
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      outline: none !important;
+      font-size: 1em; }
 
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background: #ECECEC; }

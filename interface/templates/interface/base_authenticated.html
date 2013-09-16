@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+    <title>Keystore app</title>
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <script src="{% static "js/libs/jquery.js" %}"></script>
+    <script src="{% static "js/list.js" %}"></script>
+</head>
+<body>
+    <div class="container_12">
+        <header class="main condensed container_12">
+        	<h1 class="grid_1 alpha"><a href="/">KeyStore</a></h1>
+            <input type="text" class="grid_4 search" value="Search..." name="search" />
+        	<nav class="grid_4 push_3 omega">
+                <div class="icons grid_2 alpha">
+                    <a href="/add" class="icon"><i class="icon-pencil"></i></a>
+                    <a href="/account" class="icon"><i class="icon-cog"></i></a>
+                </div>
+        		<a href="/logout" class="button orange grid_2 alpha"><i class="icon-signout"></i><span>Logout</span></a>
+        	</nav>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer>
+
+        </footer>
+    </div>
+</body>
+</html>

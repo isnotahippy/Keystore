@@ -1,19 +1,19 @@
-{%  extends "interface/base.html" %}
+{%  extends "interface/base_authenticated.html" %}
 
 {% block content %}
     <table class="keypair_list">
         <tbody>
             {% for keypair in keypairs %}
-            <tr class="keypair" data-kpid="{{ keypair.pk }}">
-                <td class="name">{{ keypair.key_name }}</td>
-                <td class="value">{{ keypair.key_value }}</td>
-                <td clas="remove"><i class="icon-remove-sign"></i></td>
+            <tr class="keypair container_12" data-kpid="{{ keypair.pk }}">
+                <td class="name grid_4 alpha">{{ keypair.key_name }}</td>
+                <td class="value grid_7">{{ keypair.key_value }}</td>
+                <td class="remove grid_1 omega"><i class="icon-remove-sign" data-kpid="{{ keypair.pk }}"></i></td>
             </tr>
             {% endfor %}
-            <tr class="keypair new">
-                <td class="name">New Row</td>
-                <td class="value"></td>
-                <td clas="remove"><i class="icon-remove-sign"></i></td>
+            <tr class="keypair new container_12">
+                <td class="name grid_4 alpha">New Row</td>
+                <td class="value grid_7"></td>
+                <td class="remove grid_1 omega"><i class="icon-remove-sign"></i></td>
             </tr>
         </tbody>
     </table>

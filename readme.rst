@@ -9,3 +9,9 @@ in a completly unrealiable and unsearchable environment. KeyStore is intended to
 Work in progress
 ----------------
 I am still implementing the front end and intend to add a simple search function.
+
+Testing
+-------
+
+cd keystore
+coverage run ../manage.py test --settings=keystore.settings.test

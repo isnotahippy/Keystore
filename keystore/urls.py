@@ -8,7 +8,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^list/', 'keys.views.keypair_list', {}, 'list'),
 
-    url(r'^api/keypair/', 'keys.views.keypair_api_post'),
+    url(r'^api/keypair/(?P<id>\d+)$', 'keys.views.keypair_api_specific'),
+    url(r'^api/keypair/', 'keys.views.keypair_api_general'),
 
     # url(r'^login/', 'django.contrib.auth.views.login'),
     url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page': '/'}),

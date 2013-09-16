@@ -9,24 +9,25 @@
     <script src="{% static "js/list.js" %}"></script>
 </head>
 <body>
-    <header class="main">
-    	<a href="/"><h1>KeyStore</h1></a>
-    	<nav>
-    		{% if user.is_authenticated %}
-    		<a href="/logout"><i class="icon-minus-sign"></i><span>Logout</span></a>
-            <a href="/list"><i class="icon-list"></i><span>List</span></a>
-            <span class="welcome">Hello, {{ name }}</span>
-    		{% else %}
-    		<a href="{% url "socialauth_begin" "github" %}"><i class="icon-github"></i><span>Login</span></a>
-    		<a href="{% url "socialauth_begin" "facebook" %}"><i class="icon-facebook"></i><span>Login</span></a>
-    		{% endif %}
-    	</nav>
-    </header>
+    <div class="container_12">
+        <header class="main container_12">
+        	<h1 class="grid_4 alpha"><a href="/">KeyStore</a></h1>
+        	<nav class="grid_4 push_4 omega">
+        		{% if user.is_authenticated %}
+        		<a href="/logout" class="button grid_2 alpha"><i class="icon-minus-sign"></i><span>Logout</span></a>
+                <a href="/list" class="button grid_2 omega"><i class="icon-list"></i><span>List</span></a>
+        		{% else %}
+        		<a href="{% url "socialauth_begin" "facebook" %}" class="button facebook grid_2 alpha"><i class="icon-facebook"></i><span>Login</span></a>
+                <a href="{% url "socialauth_begin" "github" %}" class="button github grid_2 omega"><i class="icon-github"></i><span>Login</span></a>
+        		{% endif %}
+        	</nav>
+        </header>
 
-    {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
 
-    <footer>
+        <footer>
 
-    </footer>
+        </footer>
+    </div>
 </body>
 </html>
